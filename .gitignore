@@ -1,0 +1,27 @@
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+
+# dependencies
+node_modules
+
+# production
+build
+
+# env files
+.env.prod
+.env.dev
+
+# next.js
+.next
+out
+
+# vercel
+.vercel
+
+# debug
+.pnpm-*.log
+
+# test
+coverage
+
+# misc
+.DS_Store
