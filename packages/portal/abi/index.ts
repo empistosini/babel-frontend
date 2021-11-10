@@ -1,4 +1,4 @@
-import IDOContract from './IDO.json'
-import MIMContract from './MIM.json'
+import IDO from './IDO.json'
+import MIM from './MIM.json'
 
-export { IDOContract, MIMContract }
+export const abi = { IDO: IDO.abi, MIM: MIM.abi }

@@ -7,8 +7,7 @@ node_modules
 build
 
 # env files
-.env.prod
-.env.dev
+.env.*
 
 # next.js
 .next

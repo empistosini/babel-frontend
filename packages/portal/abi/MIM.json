@@ -1,5 +1,4 @@
 {
-  "_format": "hh-sol-artifact-1",
   "contractName": "MimERC20",
   "sourceName": "contracts/mocks/MimERC20.sol",
   "abi": [

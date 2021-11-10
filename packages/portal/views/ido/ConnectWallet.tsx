@@ -20,14 +20,14 @@ import {
   useTokenAllowance,
   useTokenBalance,
 } from '@usedapp/core'
-import { BigNumber, Contract, ethers, utils } from 'ethers'
+import { BigNumber, ethers, utils } from 'ethers'
 
-import { IDOContract, MIMContract } from '@/abi'
 import { addresses } from '@/constants'
 import { Section } from '@/components'
+import { MIMContract, IDOContract, IDOInterface } from '@/constants'
 
 const baseParams = {
-  abi: new utils.Interface(IDOContract.abi),
+  abi: IDOInterface,
   address: addresses.IDO,
   args: [],
 }
@@ -54,11 +54,9 @@ const Connect: VFC = () => {
   )
 }
 
-const mimContract = new Contract(addresses.MIM, MIMContract.abi)
-
 const Approve: VFC = () => {
   const { library } = useEthers()
-  const { send, state } = useContractFunction(mimContract, 'approve')
+  const { send, state } = useContractFunction(MIMContract, 'approve')
 
   const [isLoading, setIsLoading] = useState(false)
   useEffect(() => {
@@ -98,10 +96,6 @@ const Approve: VFC = () => {
   )
 }
 
-const idoContract = new Contract(addresses.IDO, IDOContract.abi)
-const BABEL_DECIMALS = 9
-const MIM_DECIMALS = 18
-
 const Purchase: VFC<{ account: string }> = ({ account }) => {
   const balance = useTokenBalance(addresses.MIM, account)
 
@@ -123,7 +117,7 @@ const Purchase: VFC<{ account: string }> = ({ account }) => {
   const maxBabelAmount = utils.formatUnits(maxCanPurchaseAmount, 9)
 
   const { library } = useEthers()
-  const { send, state } = useContractFunction(idoContract, 'purchaseBABEL')
+  const { send, state } = useContractFunction(IDOContract, 'purchaseBABEL')
   const isLoading = state.status === 'Mining'
   const isDisabled = allotment.lte(0)
 
@@ -257,7 +251,7 @@ const Purchase: VFC<{ account: string }> = ({ account }) => {
 
 const Claim: VFC<{ isDisabled: boolean }> = ({ isDisabled }) => {
   const { account, library } = useEthers()
-  const { send, state } = useContractFunction(idoContract, 'claim')
+  const { send, state } = useContractFunction(IDOContract, 'claim')
 
   const toast = useToast()
   useEffect(() => {
