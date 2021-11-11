@@ -1,6 +1,7 @@
 import { VFC, useEffect, useState } from 'react'
 import Link from 'next/link'
-import Image from 'next/image'
+import { Image } from '@chakra-ui/react'
+// import Image from 'next/image'
 
 import { Container } from './container'
 import Logo from '../assets/logo-single.png'

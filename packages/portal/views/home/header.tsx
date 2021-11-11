@@ -5,6 +5,7 @@ import {
   HStack,
   Icon,
   IconButton,
+  Image,
   Link,
   List,
   ListIcon,
@@ -19,7 +20,7 @@ import {
   useColorMode,
   useColorModeValue,
 } from '@chakra-ui/react'
-import Image from 'next/image'
+// import Image from 'next/image'
 import { ExternalLinkIcon, MoonIcon, SunIcon } from '@chakra-ui/icons'
 import { FaGithub, FaTwitter, FaDiscord } from 'react-icons/fa'
 
@@ -27,6 +28,9 @@ import Logo from '../../assets/logo-single.png'
 
 export const Header: VFC = () => {
   const { colorMode, toggleColorMode } = useColorMode()
+  const handleTaggleColorMode = () => {
+    toggleColorMode()
+  }
   return (
     <Center as="header" w="full" position="absolute" top="0" left="0">
       <HStack
@@ -39,14 +43,14 @@ export const Header: VFC = () => {
         alignItems="center"
       >
         <Box className="w-24">
-          <Image src={Logo} alt="BabelDAO Logo" objectFit="cover" />
+          <Image src={Logo} alt="BabelDAO Logo" />
         </Box>
         <Spacer />
         <IconButton
           variant="ghost"
           icon={colorMode === 'dark' ? <SunIcon /> : <MoonIcon />}
           aria-label="Toggle Color Mode"
-          onClick={() => toggleColorMode()}
+          onClick={() => handleTaggleColorMode()}
         />
         <Spacer maxW="0.5" />
         <Popover trigger="hover" placement="bottom-end">

@@ -33,11 +33,18 @@ const baseParams = {
 }
 
 const Connect: VFC = () => {
+  const toast = useToast()
   const { activateBrowserWallet } = useEthers()
 
   const connect = () => {
     // TODO:
-    activateBrowserWallet()
+    activateBrowserWallet(err => {
+      toast({
+        status: 'error',
+        title: err.message,
+        position: 'bottom-right',
+      })
+    })
   }
 
   return (
@@ -55,7 +62,7 @@ const Connect: VFC = () => {
 }
 
 const Approve: VFC = () => {
-  const { library } = useEthers()
+  const { active, library } = useEthers()
   const { send, state } = useContractFunction(MIMContract, 'approve')
 
   const [isLoading, setIsLoading] = useState(false)
@@ -79,6 +86,8 @@ const Approve: VFC = () => {
     if (!library?.getSigner() || isLoading) return
     await send(addresses.IDO, ethers.constants.MaxUint256)
   }
+
+  if (!active) return null
 
   return (
     <Center>
@@ -306,7 +315,7 @@ const ConnectWalletContent: VFC = () => {
     { ...baseParams, method: 'purchasedAmounts', args: [account] },
   ])
 
-  const isShowApprove = !bought && !allowance?.eq(ethers.constants.MaxUint256)
+  let isShowApprove = !bought && !allowance?.eq(ethers.constants.MaxUint256)
   let isShowPurchase = !isShowApprove && saleStarted && !bought && !finalized
   const isShowClaim = bought && purchasedAmount.gt(0)
   const isDisabledClaim = bought && !finalized
@@ -315,6 +324,7 @@ const ConnectWalletContent: VFC = () => {
   if (whitelistEnabled && !whitelisted) {
     note = 'You are not in Whitelist!'
     isShowPurchase = false
+    isShowApprove = false
   }
 
   if (bought && purchasedAmount.gt(0)) {
@@ -326,7 +336,7 @@ const ConnectWalletContent: VFC = () => {
       {isShowApprove && <Approve />}
       {isShowPurchase && <Purchase account={account} />}
       {isShowClaim && <Claim isDisabled={isDisabledClaim} />}
-      {!isShowClaim && (
+      {finalized && (
         <Center>
           <Button size="lg" borderRadius="full" colorScheme="orange">
             Goto APP
@@ -356,7 +366,7 @@ export const ConnectWallet: VFC = () => {
         bgColor={bgColor}
       >
         <h4 className="font-bold mb-4">
-          Claim your AVAX to join the Babel DAO now!
+          Claim your BABEL to join the Babel DAO now!
         </h4>
         {active ? <ConnectWalletContent /> : <Connect />}
       </Box>

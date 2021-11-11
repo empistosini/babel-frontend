@@ -1,25 +1,27 @@
 import { VFC } from 'react'
-import Image from 'next/image'
+// import Image from 'next/image'
 import {
   Center,
+  Image,
   Skeleton,
   Stat,
   StatLabel,
   StatNumber,
   useColorModeValue,
 } from '@chakra-ui/react'
-import { useTokenBalance } from '@usedapp/core'
+import { useContractCall, useTokenBalance } from '@usedapp/core'
 import { utils } from 'ethers'
 
 import { BabelHappy } from '@/assets/img'
-import { addresses } from '@/constants'
+import { addresses, IDOInterface } from '@/constants'
 import { currencyFormater } from '@/helpers'
 import { Section } from '@/components/section'
 
 export const TotalRaised: VFC = () => {
   const balance = useTokenBalance(addresses.MIM, addresses.IDO)
+  const [finalized] = useContractCall({ abi: IDOInterface, address: addresses.IDO, method: 'finalized', args: [] }) ?? [false]
   const amount = currencyFormater.format(
-    Number(utils.formatUnits(balance ?? 0, 18)),
+    Number(utils.formatUnits(finalized ? utils.parseUnits('1000000') : (balance ?? 0), 18)),
   )
 
   const bgColor = useColorModeValue('white', 'gray.800')

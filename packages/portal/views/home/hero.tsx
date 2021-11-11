@@ -3,6 +3,7 @@ import {
   Button,
   Container,
   Heading,
+  Image,
   Link,
   Stack,
   Stat,
@@ -12,7 +13,7 @@ import {
   Spacer,
   Text,
 } from '@chakra-ui/react'
-import Image from 'next/image'
+// import Image from 'next/image'
 
 import HeroImg from '../../assets/hero-img-4.png'
 
