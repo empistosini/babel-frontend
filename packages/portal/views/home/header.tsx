@@ -30,6 +30,14 @@ export const Header: VFC = () => {
   const { colorMode, toggleColorMode } = useColorMode()
   const handleTaggleColorMode = () => {
     toggleColorMode()
+    const classList = document.documentElement.classList
+    if (classList.contains('dark')) {
+      classList.remove('dark')
+      classList.add('light')
+    } else {
+      classList.remove('light')
+      classList.add('dark')
+    }
   }
   return (
     <Center as="header" w="full" position="absolute" top="0" left="0">

@@ -10,9 +10,10 @@ module.exports = {
   darkMode: 'class', // or 'media' or 'class'
   theme: {
     colors: {
-      primary: 'var(--color-primary)',
-      secondary: 'var(--color-secondary)',
-      ...colors,
+      // primary: 'var(--color-primary)',
+      primary: colors.orange,
+      secondary: colors.blue,
+      // ...colors,
     },
     extend: {},
   },

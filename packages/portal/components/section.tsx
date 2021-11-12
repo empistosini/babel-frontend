@@ -1,7 +1,7 @@
 import { FC, HTMLAttributes } from 'react'
 import clsx from 'clsx'
 
-import { Container } from './container'
+import { Container } from './Container'
 
 export type SectionProps = HTMLAttributes<HTMLElement> & {
   title?: string

@@ -6,11 +6,6 @@ import {
   Image,
   Link,
   Stack,
-  Stat,
-  StatGroup,
-  StatLabel,
-  StatNumber,
-  Spacer,
   Text,
 } from '@chakra-ui/react'
 // import Image from 'next/image'
@@ -70,42 +65,6 @@ export const Hero = () => (
       <Box w="100%" maxW="2xl">
         <Image src={HeroImg} alt="" />
       </Box>
-      <Spacer w={'full'} />
-      <StatGroup w="full">
-        <Stat
-          flexBasis={{ base: '100%', md: '25%' }}
-          mb={{ base: 2, md: 0 }}
-          size="xl"
-        >
-          <StatLabel fontSize={{ base: 'xl', md: 'lg' }}>
-            Total BABEL Staked
-          </StatLabel>
-          <StatNumber fontSize={{ base: '4xl', md: '3xl' }}>91.1%</StatNumber>
-        </Stat>
-
-        <Stat flexBasis={{ base: '100%', md: '25%' }} mb={{ base: 2, md: 0 }}>
-          <StatLabel fontSize={{ base: 'xl', md: 'lg' }}>
-            Treasury Balance
-          </StatLabel>
-          <StatNumber fontSize={{ base: '4xl', md: '3xl' }}>
-            $643,430,570
-          </StatNumber>
-        </Stat>
-
-        <Stat flexBasis={{ base: '100%', md: '25%' }} mb={{ base: 2, md: 0 }}>
-          <StatLabel fontSize={{ base: 'xl', md: 'lg' }}>
-            Total Value Locked
-          </StatLabel>
-          <StatNumber fontSize={{ base: '4xl', md: '3xl' }}>
-            $3,520,544,451
-          </StatNumber>
-        </Stat>
-
-        <Stat flexBasis={{ base: '100%', md: '25%' }} mb={{ base: 2, md: 0 }}>
-          <StatLabel fontSize={{ base: 'xl', md: 'lg' }}>Current APY</StatLabel>
-          <StatNumber fontSize={{ base: '4xl', md: '3xl' }}>8,199%</StatNumber>
-        </Stat>
-      </StatGroup>
     </Stack>
   </Container>
 )

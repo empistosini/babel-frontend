@@ -16,11 +16,15 @@
     "@chakra-ui/theme-tools": "^1.2.3",
     "@emotion/react": "^11.5.0",
     "@emotion/styled": "^11.3.0",
+    "@ethersproject/providers": "^5.5.0",
     "@usedapp/core": "^0.5.4",
+    "@web3-react/core": "^8.0.10-alpha.0",
+    "@web3-react/network": "^8.0.10-alpha.0",
     "ethers": "5.4.1",
     "framer-motion": "^4.1.17",
     "intl": "^1.2.5",
-    "recoil": "^0.5.2"
+    "recoil": "^0.5.2",
+    "zustand": "^3.6.5"
   },
   "devDependencies": {
     "imagemin-optipng": "^8.0.0",

@@ -1,5 +1,25 @@
 const MIM = process.env.NEXT_PUBLIC_MIM_ADDRESS
 const IDO = process.env.NEXT_PUBLIC_IDO_ADDRESS
 const MULTICALL = process.env.NEXT_PUBLIC_MULTICALL_ADDRESS
+const BABEL_MIM_LP = process.env.NEXT_PUBLIC_BABEL_MIM_ADDRESS
 
-export const addresses = { IDO, MIM, MULTICALL }
+const BABEL = process.env.NEXT_PUBLIC_BABEL_ADDRESS
+const sBABEL = process.env.NEXT_PUBLIC_sBABEL_ADDRESS
+const STAKING = process.env.NEXT_PUBLIC_STAKING_ADDRESS
+const TREASURY = process.env.NEXT_PUBLIC_TREASURY_ADDRESS
+const STAKING_HELP = process.env.NEXT_PUBLIC_STAKING_HELP_ADDRESS
+const BONDING_CALC = process.env.NEXT_PUBLIC_BONDING_CALC_ADDRESS
+
+export const addresses = {
+  IDO,
+  MIM,
+  MULTICALL,
+  BABEL_MIM_LP,
+
+  BABEL,
+  sBABEL,
+  STAKING,
+  TREASURY,
+  STAKING_HELP,
+  BONDING_CALC,
+}

@@ -38,7 +38,7 @@ const Connect: VFC = () => {
 
   const connect = () => {
     // TODO:
-    activateBrowserWallet(err => {
+    activateBrowserWallet((err) => {
       toast({
         status: 'error',
         title: err.message,
